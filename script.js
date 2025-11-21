@@ -1,28 +1,22 @@
-// Menu Burger (mobile)
+// --- MENU BURGER ---
 const burger = document.getElementById("burger");
 const navLinks = document.getElementById("navLinks");
 
-burger.addEventListener("click", () => {
-    if (navLinks.style.right === "0px") {
-        navLinks.style.right = "-100%";
-    } else {
-        navLinks.style.right = "0";
-    }
-});
+burger.onclick = () => {
+    navLinks.style.right = navLinks.style.right === "0px" ? "-100%" : "0";
+};
 
-// Animation simple au scroll
+// --- ANIMATION AU SCROLL ---
 window.addEventListener("scroll", () => {
-    document.querySelectorAll("section").forEach(sec => {
+    document.querySelectorAll("section").forEach(section => {
         const top = window.scrollY;
-        const offset = sec.offsetTop - 300;
-        const height = sec.offsetHeight;
+        const offset = section.offsetTop - 300;
+        const height = section.offsetHeight;
 
         if (top >= offset && top < offset + height) {
-            sec.style.opacity = 1;
-            sec.style.transform = "translateY(0)";
-        } else {
-            sec.style.opacity = 0;
-            sec.style.transform = "translateY(40px)";
+            section.style.opacity = 1;
+            section.style.transform = "translateY(0)";
+            section.style.transition = "1s";
         }
     });
 });
